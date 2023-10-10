@@ -1,7 +1,7 @@
 package repos.impl.inMemory;
 
 import models.Car;
-import models.CarType;
+import enums.CarType;
 import repos.CarRepo;
 
 import java.util.ArrayList;

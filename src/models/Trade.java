@@ -41,4 +41,13 @@ public class Trade {
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
+
+    @Override
+    public String toString() {
+        return id +
+                " " +
+                car.toString() +
+                " " +
+                customer.toString();
+    }
 }

@@ -21,7 +21,8 @@
 // jar, jar, war (tomcat)
 // библиотека только jstl
 
-//TODO решить что возвращают контроллеры, сделать парсеры, консольное приложение, аннотация для синглтона
+
+//TODO спросить про jdbc, singleton annotation
 
 import ui.console.ConsoleUI;
 

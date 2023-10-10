@@ -1,7 +1,7 @@
 package parsers;
 
 import models.Car;
-import models.CarType;
+import enums.CarType;
 
 public class CarParser {
     public static Car parseStrToCar(String str){

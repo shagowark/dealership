@@ -1,5 +1,6 @@
 package repos.impl.inMemory;
 
+import enums.CarType;
 import enums.Gender;
 import models.*;
 import repos.TradeRepo;

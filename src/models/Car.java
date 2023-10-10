@@ -1,5 +1,7 @@
 package models;
 
+import enums.CarType;
+
 public class Car {
     private static int ID_COUNTER;
     private int id;
@@ -55,7 +57,7 @@ public class Car {
 
     @Override
     public String toString() {
-        return Integer.toString(id) +
+        return id +
                 " " +
                 type.toString() +
                 " " +
