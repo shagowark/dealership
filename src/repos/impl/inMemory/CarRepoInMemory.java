@@ -1,4 +1,4 @@
-package repos.impl;
+package repos.impl.inMemory;
 
 import models.Car;
 import models.CarType;
@@ -26,27 +26,34 @@ public class CarRepoInMemory implements CarRepo {
     }
 
     @Override
-    public int save(Car car) {
-        return 0;
+    public void save(Car car) {
+        databaseCar.add(car);
     }
 
     @Override
     public Car findById(int id) {
+        for (Car car : databaseCar){
+            if (car.getId() == id){
+                return car;
+            }
+        }
         return null;
     }
 
     @Override
-    public void update(Car car) {
-
+    public void update(Car newCar) {
+        Car oldCar = findById(newCar.getId());
+        oldCar.setBrand(newCar.getBrand());
+        oldCar.setModel(newCar.getModel());
     }
 
     @Override
-    public void removeById(int id) {
-
+    public void removeById(int id){
+        databaseCar.remove(findById(id));
     }
 
     @Override
     public List<Car> listAll() {
-        return null;
+        return databaseCar;
     }
 }

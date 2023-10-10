@@ -52,4 +52,15 @@ public class Car {
     public void setModel(String model) {
         this.model = model;
     }
+
+    @Override
+    public String toString() {
+        return Integer.toString(id) +
+                " " +
+                type.toString() +
+                " " +
+                brand +
+                " " +
+                model;
+    }
 }

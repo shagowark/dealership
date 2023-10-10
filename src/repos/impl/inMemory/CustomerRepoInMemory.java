@@ -1,7 +1,7 @@
-package repos.impl;
+package repos.impl.inMemory;
 
 import models.Customer;
-import models.Gender;
+import enums.Gender;
 import repos.CustomerRepo;
 
 import java.util.ArrayList;
@@ -30,27 +30,37 @@ public class CustomerRepoInMemory implements CustomerRepo {
     }
 
     @Override
-    public int save(Customer customer) {
-        return 0;
+    public void save(Customer customer) {
+        databaseCustomer.add(customer);
     }
 
     @Override
     public Customer findById(int id) {
+        for (Customer customer : databaseCustomer){
+            if (customer.getId() == id){
+                return customer;
+            }
+        }
         return null;
     }
 
     @Override
-    public void update(Customer customer) {
-
+    public void update(Customer newCustomer) {
+        Customer oldCustomer = findById(newCustomer.getId());
+        oldCustomer.setLastName(newCustomer.getLastName());
+        oldCustomer.setFirstName(newCustomer.getFirstName());
+        oldCustomer.setMiddleName(newCustomer.getMiddleName());
+        oldCustomer.setAge(newCustomer.getAge());
+        oldCustomer.setGender(newCustomer.getGender());
     }
 
     @Override
     public void removeById(int id) {
-
+        databaseCustomer.remove(findById(id));
     }
 
     @Override
     public List<Customer> listAll() {
-        return null;
+        return databaseCustomer;
     }
 }

@@ -1,5 +1,7 @@
 package models;
 
+import enums.Gender;
+
 public class Customer {
     private static int ID_COUNTER;
     private int id;

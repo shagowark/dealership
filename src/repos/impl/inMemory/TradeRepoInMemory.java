@@ -1,5 +1,6 @@
-package repos.impl;
+package repos.impl.inMemory;
 
+import enums.Gender;
 import models.*;
 import repos.TradeRepo;
 
@@ -33,27 +34,34 @@ public class TradeRepoInMemory implements TradeRepo {
     }
 
     @Override
-    public int save(Trade trade) {
-        return 0;
+    public void save(Trade trade) {
+        databaseTrade.add(trade);
     }
 
     @Override
     public Trade findById(int id) {
+        for (Trade trade : databaseTrade){
+            if (trade.getId() == id){
+                return trade;
+            }
+        }
         return null;
     }
 
     @Override
-    public void update(Trade trade) {
-
+    public void update(Trade newTrade) {
+        Trade oldTrade = findById(newTrade.getId());
+        oldTrade.setCar(newTrade.getCar());
+        oldTrade.setCustomer(newTrade.getCustomer());
     }
 
     @Override
     public void removeById(int id) {
-
+        databaseTrade.remove(findById(id));
     }
 
     @Override
     public List<Trade> listAll() {
-        return null;
+        return databaseTrade;
     }
 }
