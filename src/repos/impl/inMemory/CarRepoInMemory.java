@@ -46,6 +46,7 @@ public class CarRepoInMemory implements CarRepo {
     @Override
     public void update(Car newCar) {
         Car oldCar = findById(newCar.getId());
+        oldCar.setType(newCar.getType());
         oldCar.setBrand(newCar.getBrand());
         oldCar.setModel(newCar.getModel());
     }

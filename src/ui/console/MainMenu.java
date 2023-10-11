@@ -43,7 +43,7 @@ public class MainMenu {
             case "2" -> customerMenu.runCustomerMenu();
             case "3" -> tradeMenu.runTradeMenu();
             case "x" -> {
-                System.out.println("Завершение работы");
+                System.out.println("Завершение работы...");
                 running = false;
             }
             default -> System.out.println("Неверный ввод!");

@@ -7,13 +7,14 @@ import java.util.Scanner;
 public class TradeMenu {
     private final Scanner input;
     private final TradeController tradeController = TradeController.getInstance();
-    private boolean running = true;
+    private boolean running;
 
     public TradeMenu(Scanner input) {
         this.input = input;
     }
 
     public void runTradeMenu(){
+        running = true;
         while (running){
             showTradeMenu();
             checkInputTradeMenu();
@@ -43,6 +44,7 @@ public class TradeMenu {
     }
 
     private void listAllTrades() {
+        System.out.println("ID  ID_машины  ID_покупателя");
         for (String str : tradeController.listAllTrades()){
             System.out.println(str);
         }

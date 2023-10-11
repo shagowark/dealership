@@ -7,13 +7,14 @@ import java.util.Scanner;
 public class CarMenu {
     private final CarController carController = CarController.getInstance();
     private final Scanner input;
-    private boolean running = true;
+    private boolean running;
 
     public CarMenu(Scanner input) {
         this.input = input;
     }
 
     public void runCarMenu() {
+        running = true;
         while (running) {
             showCarMenu();
             checkInputCarMenu();
@@ -51,6 +52,7 @@ public class CarMenu {
     }
 
     private void listAllCars() {
+        System.out.println("ID  Тип  Марка  Модель");
         for (String str : carController.listAllCars()) {
             System.out.println(str);
         }

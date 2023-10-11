@@ -6,16 +6,15 @@ import java.util.Scanner;
 
 public class CustomerMenu {
     private final Scanner input;
-
-    //TODO singleton for cntrlr
     private final CustomerController customerController = CustomerController.getInstance();
-    private boolean running = true;
+    private boolean running;
 
     public CustomerMenu(Scanner input) {
         this.input = input;
     }
 
     public void runCustomerMenu() {
+        running = true;
         while (running) {
             showCustomerMenu();
             checkInputCustomerMenu();
@@ -51,6 +50,7 @@ public class CustomerMenu {
     }
 
     private void listAllCustomers() {
+        System.out.println("ID  Фамилия  Имя  Отчество  Возраст Пол");
         for (String str : customerController.listAllCustomers()) {
             System.out.println(str);
         }
