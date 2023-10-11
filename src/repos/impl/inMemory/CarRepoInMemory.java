@@ -5,11 +5,14 @@ import enums.CarType;
 import repos.CarRepo;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class CarRepoInMemory implements CarRepo {
     private static CarRepoInMemory INSTANCE;
     List<Car> databaseCar = new ArrayList<>();
+    Set<Car> asd = new HashSet<>();
 
     {
         databaseCar.add(new Car(CarType.PASSENGER, "Mercedes", "Benz"));

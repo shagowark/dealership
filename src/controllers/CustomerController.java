@@ -7,7 +7,15 @@ import services.CustomerService;
 import java.util.List;
 
 public class CustomerController {
+    private static CustomerController INSTANCE;
     private final CustomerService customerService = CustomerService.getInstance();
+    private CustomerController(){}
+    public static CustomerController getInstance(){
+        if (INSTANCE == null){
+            INSTANCE = new CustomerController();
+        }
+        return INSTANCE;
+    }
 
     public void saveCustomer(String customerStr){
         customerService.save(CustomerParser.parseStrToCustomer(customerStr));

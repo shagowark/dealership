@@ -13,7 +13,7 @@ public class CustomerParser {
                 words[1],
                 words[2],
                 Integer.parseInt(words[3]),
-                words[4].equals("Male") ? Gender.MALE : Gender.FEMALE
+                words[4].equals("Male") ? Gender.MALE : Gender.FEMALE //TODO переделать
         );
     }
 

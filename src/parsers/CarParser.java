@@ -6,7 +6,7 @@ import enums.CarType;
 public class CarParser {
     public static Car parseStrToCar(String str){
         String[] words = str.split(" ");
-        return new Car(words[0].equals("Passenger") ? CarType.PASSENGER : CarType.TRUCK,
+        return new Car(words[0].equals("Passenger") ? CarType.PASSENGER : CarType.TRUCK, //TODO переделать enum
                 words[1], words[2]);
     }
 

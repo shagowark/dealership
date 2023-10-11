@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class TradeMenu {
     private final Scanner input;
-    private TradeController tradeController = new TradeController();
+    private final TradeController tradeController = TradeController.getInstance();
     private boolean running = true;
 
     public TradeMenu(Scanner input) {
@@ -38,6 +38,7 @@ public class TradeMenu {
                 System.out.println("Возвращение...");
                 running = false;
             }
+            default -> System.out.println("Неверный ввод!");
         }
     }
 

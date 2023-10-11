@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class MainMenu {
     private final Scanner input;
-
     private final CarMenu carMenu;
     private final CustomerMenu customerMenu;
     private final TradeMenu tradeMenu;
@@ -47,6 +46,7 @@ public class MainMenu {
                 System.out.println("Завершение работы");
                 running = false;
             }
+            default -> System.out.println("Неверный ввод!");
         }
     }
 }

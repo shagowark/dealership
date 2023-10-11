@@ -1,6 +1,9 @@
 package services;
 
 import models.Car;
+import models.Customer;
+import models.Trade;
+import parsers.CustomerParser;
 import repos.CarRepo;
 import repos.impl.inMemory.CarRepoInMemory;
 
@@ -8,6 +11,8 @@ import java.util.List;
 public class CarService {
     private static CarService INSTANCE;
     private final CarRepo carRepo = CarRepoInMemory.getInstance();
+    private final CustomerService customerService = CustomerService.getInstance();
+    private final TradeService tradeService = TradeService.getInstance();
 
     private CarService(){}
     public static CarService getInstance(){
@@ -30,5 +35,13 @@ public class CarService {
     }
     public List<Car> listAll(){
         return carRepo.listAll();
+    }
+
+    public void sellCar(int id, String customerStr) {
+        Car car = findById(id);
+        Customer customer = CustomerParser.parseStrToCustomer(customerStr);
+        customerService.save(customer);
+        tradeService.save(new Trade(car, customer));
+        removeById(id);
     }
 }
