@@ -37,11 +37,11 @@ public class CarService {
         return carRepo.listAll();
     }
 
-    public void sellCar(int id, String customerStr) {
-        Car car = findById(id);
+    public void sellCar(int carId, String customerStr) {
+        Car car = findById(carId);
         Customer customer = CustomerParser.parseStrToCustomer(customerStr);
         customerService.save(customer);
-        tradeService.save(new Trade(car, customer));
-        removeById(id);
+        tradeService.save(new Trade(carId, customer.getId()));
+        removeById(carId);
     }
 }

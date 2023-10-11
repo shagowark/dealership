@@ -13,16 +13,9 @@ public class TradeRepoInMemory implements TradeRepo {
     List<Trade> databaseTrade = new ArrayList<>();
 
     {
-        databaseTrade.add(new Trade(
-                new Car(CarType.PASSENGER, "Lada", "Priora"),
-                new Customer("Wick", "John", "Nikitich",
-                        40, Gender.MALE)
-        ));
-        databaseTrade.add(new Trade(
-                new Car(CarType.PASSENGER, "Volkswagen", "Polo"),
-                new Customer("Scott", "Jeanne", "Borisovna",
-                        40, Gender.MALE)
-        ));
+        databaseTrade.add(new Trade(14, 20));
+        databaseTrade.add(new Trade(10, 10));
+        databaseTrade.add(new Trade(17, 50));
     }
 
     private TradeRepoInMemory(){}
@@ -52,8 +45,8 @@ public class TradeRepoInMemory implements TradeRepo {
     @Override
     public void update(Trade newTrade) {
         Trade oldTrade = findById(newTrade.getId());
-        oldTrade.setCar(newTrade.getCar());
-        oldTrade.setCustomer(newTrade.getCustomer());
+        oldTrade.setCarId(newTrade.getCarId());
+        oldTrade.setCustomerId(newTrade.getCustomerId());
     }
 
     @Override

@@ -3,19 +3,19 @@ package models;
 public class Trade {
     private static int ID_COUNTER;
     private int id;
-    private Car car;
-    private Customer customer;
+    private int carId;
+    private int customerId;
 
-    public Trade(Car car, Customer customer) {
+    public Trade(int carId, int customerId) {
         this.id = ++ID_COUNTER;
-        this.car = car;
-        this.customer = customer;
+        this.carId = carId;
+        this.customerId = customerId;
     }
 
-    public Trade(int id, Car car, Customer customer) {
+    public Trade(int id, int carId, int customerId) {
         this.id = id;
-        this.car = car;
-        this.customer = customer;
+        this.carId = carId;
+        this.customerId = customerId;
     }
 
     public int getId() {
@@ -26,28 +26,28 @@ public class Trade {
         this.id = id;
     }
 
-    public Car getCar() {
-        return car;
+    public int getCarId() {
+        return carId;
     }
 
-    public void setCar(Car car) {
-        this.car = car;
+    public void setCarId(int carId) {
+        this.carId = carId;
     }
 
-    public Customer getCustomer() {
-        return customer;
+    public int getCustomerId() {
+        return customerId;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
     }
 
     @Override
     public String toString() {
         return id +
                 " " +
-                car.toString() +
+                carId +
                 " " +
-                customer.toString();
+                customerId;
     }
 }
