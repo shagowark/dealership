@@ -4,7 +4,7 @@ import controllers.CarController;
 
 import java.util.Scanner;
 
-public class CarMenu {
+public class CarMenu implements Command{
     private final CarController carController = CarController.getInstance();
     private final Scanner input;
     private boolean running;
@@ -13,12 +13,18 @@ public class CarMenu {
         this.input = input;
     }
 
-    public void runCarMenu() {
+    @Override
+    public void execute() {
         running = true;
         while (running) {
             showCarMenu();
             checkInputCarMenu();
         }
+    }
+
+    @Override
+    public String getMessage(){
+        return "1 - Меню автомобили";
     }
 
     private void showCarMenu() {
@@ -72,7 +78,7 @@ public class CarMenu {
     private void removeCar() {
         try {
             System.out.println("Введите ID автомобиля, который хотите удалить");
-            carController.removeCarById(input.nextInt()); //TODO где поставить проверку??
+            carController.removeCarById(input.nextInt());
             System.out.println("Успешно");
         } catch (Exception e) {
             System.out.println("Неверный ввод!");

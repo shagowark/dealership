@@ -4,7 +4,7 @@ import controllers.TradeController;
 
 import java.util.Scanner;
 
-public class TradeMenu {
+public class TradeMenu implements Command{
     private final Scanner input;
     private final TradeController tradeController = TradeController.getInstance();
     private boolean running;
@@ -13,12 +13,18 @@ public class TradeMenu {
         this.input = input;
     }
 
-    public void runTradeMenu(){
+    @Override
+    public void execute(){
         running = true;
         while (running){
             showTradeMenu();
             checkInputTradeMenu();
         }
+    }
+
+    @Override
+    public String getMessage() {
+        return "3 - Меню продажи";
     }
 
     private void showTradeMenu(){

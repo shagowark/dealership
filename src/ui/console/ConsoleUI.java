@@ -1,7 +1,5 @@
 package ui.console;
 
-import services.CustomerService;
-
 import java.util.Scanner;
 
 public class ConsoleUI {

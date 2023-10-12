@@ -12,7 +12,6 @@ import java.util.Set;
 public class CarRepoInMemory implements CarRepo {
     private static CarRepoInMemory INSTANCE;
     List<Car> databaseCar = new ArrayList<>();
-    Set<Car> asd = new HashSet<>();
 
     {
         databaseCar.add(new Car(CarType.PASSENGER, "Mercedes", "Benz"));

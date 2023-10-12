@@ -2,13 +2,13 @@ package controllers;
 
 import models.Customer;
 import parsers.CustomerParser;
-import services.CustomerService;
+import services.impl.CustomerServiceImpl;
 
 import java.util.List;
 
 public class CustomerController {
     private static CustomerController INSTANCE;
-    private final CustomerService customerService = CustomerService.getInstance();
+    private final CustomerServiceImpl customerServiceImpl = CustomerServiceImpl.getInstance();
     private CustomerController(){}
     public static CustomerController getInstance(){
         if (INSTANCE == null){
@@ -18,20 +18,20 @@ public class CustomerController {
     }
 
     public void saveCustomer(String customerStr){
-        customerService.save(CustomerParser.parseStrToCustomer(customerStr));
+        customerServiceImpl.save(CustomerParser.parseStrToCustomer(customerStr));
     }
 
     public String findCustomerById(int id){
-        return customerService.findById(id).toString();
+        return customerServiceImpl.findById(id).toString();
     }
     public void  updateCustomer(String carStr){
-        customerService.update(CustomerParser.parseStrToCustomerWithId(carStr));
+        customerServiceImpl.update(CustomerParser.parseStrToCustomerWithId(carStr));
     }
     public void removeCustomerById(int id){
-        customerService.removeById(id);
+        customerServiceImpl.removeById(id);
     }
 
     public List<String> listAllCustomers(){
-        return customerService.listAll().stream().map(Customer::toString).toList();
+        return customerServiceImpl.listAll().stream().map(Customer::toString).toList();
     }
 }

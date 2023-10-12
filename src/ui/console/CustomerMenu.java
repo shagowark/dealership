@@ -4,7 +4,7 @@ import controllers.CustomerController;
 
 import java.util.Scanner;
 
-public class CustomerMenu {
+public class CustomerMenu implements Command{
     private final Scanner input;
     private final CustomerController customerController = CustomerController.getInstance();
     private boolean running;
@@ -13,12 +13,18 @@ public class CustomerMenu {
         this.input = input;
     }
 
-    public void runCustomerMenu() {
+    @Override
+    public void execute() {
         running = true;
         while (running) {
             showCustomerMenu();
             checkInputCustomerMenu();
         }
+    }
+
+    @Override
+    public String getMessage() {
+        return "2 - Меню покупатели";
     }
 
     private void showCustomerMenu() {

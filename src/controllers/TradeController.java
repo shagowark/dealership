@@ -1,13 +1,13 @@
 package controllers;
 
 import models.Trade;
-import services.TradeService;
+import services.impl.TradeServiceImpl;
 
 import java.util.List;
 
 public class TradeController {
     private static TradeController INSTANCE;
-    private final TradeService tradeService = TradeService.getInstance();
+    private final TradeServiceImpl tradeServiceImpl = TradeServiceImpl.getInstance();
     private TradeController(){}
     public static TradeController getInstance(){
         if (INSTANCE == null){
@@ -17,6 +17,6 @@ public class TradeController {
     }
 
     public List<String> listAllTrades() {
-        return tradeService.listAll().stream().map(Trade::toString).toList();
+        return tradeServiceImpl.listAll().stream().map(Trade::toString).toList();
     }
 }
