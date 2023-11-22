@@ -5,6 +5,7 @@ import parsers.CustomerParser;
 import services.impl.CustomerServiceImpl;
 
 import java.util.List;
+import java.util.UUID;
 
 public class CustomerController {
     private static CustomerController INSTANCE;
@@ -21,13 +22,13 @@ public class CustomerController {
         customerServiceImpl.save(CustomerParser.parseStrToCustomer(customerStr));
     }
 
-    public String findCustomerById(int id){
+    public String findCustomerById(UUID id){
         return customerServiceImpl.findById(id).toString();
     }
     public void  updateCustomer(String carStr){
         customerServiceImpl.update(CustomerParser.parseStrToCustomerWithId(carStr));
     }
-    public void removeCustomerById(int id){
+    public void removeCustomerById(UUID id){
         customerServiceImpl.removeById(id);
     }
 

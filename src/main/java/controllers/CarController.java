@@ -5,6 +5,7 @@ import parsers.CarParser;
 import services.impl.CarServiceImpl;
 
 import java.util.List;
+import java.util.UUID;
 
 public class CarController {
     private static CarController INSTANCE;
@@ -21,13 +22,13 @@ public class CarController {
         carServiceImpl.save(CarParser.parseStrToCar(carStr));
     }
 
-    public String findCarById(int id){
+    public String findCarById(UUID id){
         return carServiceImpl.findById(id).toString();
     }
     public void  updateCar(String carStr){
         carServiceImpl.update(CarParser.parseStrToCarWithId(carStr));
     }
-    public void removeCarById(int id){
+    public void removeCarById(UUID id){
             carServiceImpl.removeById(id);
     }
 
@@ -35,7 +36,7 @@ public class CarController {
         return carServiceImpl.listAll().stream().map(Car::toString).toList();
     }
 
-    public void sellCar(int id, String customerStr) {
+    public void sellCar(UUID id, String customerStr) {
         carServiceImpl.sellCar(id, customerStr);
     }
 }

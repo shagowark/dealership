@@ -2,32 +2,37 @@ package models;
 
 import enums.CarType;
 
+import java.util.UUID;
+
 public class Car {
-    private static int ID_COUNTER;
-    private int id;
+    private UUID id;
     private CarType type;
     private String brand;
     private String model;
 
     public Car(CarType type, String brand, String model) {
-        this.id = ++ID_COUNTER;
+        this.id = UUID.randomUUID();
         this.type = type;
         this.brand = brand;
         this.model = model;
     }
 
-    public Car(int id, CarType type, String brand, String model) {
+    public Car(UUID id, CarType type, String brand, String model) {
         this.id = id;
         this.type = type;
         this.brand = brand;
         this.model = model;
     }
 
-    public int getId() {
+    public Car() {
+
+    }
+
+    public UUID getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
@@ -57,7 +62,7 @@ public class Car {
 
     @Override
     public String toString() {
-        return id +
+        return id.toString() +
                 " " +
                 type.toString() +
                 " " +

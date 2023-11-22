@@ -6,6 +6,7 @@ import repos.impl.inMemory.TradeRepoInMemory;
 import services.TradeService;
 
 import java.util.List;
+import java.util.UUID;
 
 public class TradeServiceImpl implements TradeService {
     private static TradeServiceImpl INSTANCE;
@@ -25,7 +26,7 @@ public class TradeServiceImpl implements TradeService {
         tradeRepo.save(trade);
     }
 
-    public Trade findById(int id) {
+    public Trade findById(UUID id) {
         return tradeRepo.findById(id);
     }
 
@@ -33,7 +34,7 @@ public class TradeServiceImpl implements TradeService {
         tradeRepo.update(trade);
     }
 
-    public void removeById(int id) {
+    public void removeById(UUID id) {
         tradeRepo.removeById(id);
     }
 

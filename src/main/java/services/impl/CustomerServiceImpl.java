@@ -2,14 +2,16 @@ package services.impl;
 
 import models.Customer;
 import repos.CustomerRepo;
+import repos.impl.db.CustomerRepoDB;
 import repos.impl.inMemory.CustomerRepoInMemory;
 import services.CustomerService;
 
 import java.util.List;
+import java.util.UUID;
 
 public class CustomerServiceImpl implements CustomerService {
     private static CustomerServiceImpl INSTANCE;
-    private final CustomerRepo customerRepo = CustomerRepoInMemory.getInstance();
+    private final CustomerRepo customerRepo = CustomerRepoDB.getInstance(); // можно поменять на inmemory
 
     private CustomerServiceImpl() {
     }
@@ -27,7 +29,7 @@ public class CustomerServiceImpl implements CustomerService {
         customerRepo.save(customer);
     }
 
-    public Customer findById(int id) {
+    public Customer findById(UUID id) {
         return customerRepo.findById(id);
     }
 
@@ -35,7 +37,7 @@ public class CustomerServiceImpl implements CustomerService {
         customerRepo.update(customer);
     }
 
-    public void removeById(int id) {
+    public void removeById(UUID id) {
         customerRepo.removeById(id);
     }
 

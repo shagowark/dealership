@@ -7,16 +7,11 @@ import repos.TradeRepo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class TradeRepoInMemory implements TradeRepo {
     private static TradeRepoInMemory INSTANCE;
     List<Trade> databaseTrade = new ArrayList<>();
-
-    {
-        databaseTrade.add(new Trade(14, 20));
-        databaseTrade.add(new Trade(10, 10));
-        databaseTrade.add(new Trade(17, 50));
-    }
 
     private TradeRepoInMemory(){}
 
@@ -33,7 +28,7 @@ public class TradeRepoInMemory implements TradeRepo {
     }
 
     @Override
-    public Trade findById(int id) {
+    public Trade findById(UUID id) {
         for (Trade trade : databaseTrade){
             if (trade.getId() == id){
                 return trade;
@@ -50,7 +45,7 @@ public class TradeRepoInMemory implements TradeRepo {
     }
 
     @Override
-    public void removeById(int id) {
+    public void removeById(UUID id) {
         databaseTrade.remove(findById(id));
     }
 

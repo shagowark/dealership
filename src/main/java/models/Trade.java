@@ -1,53 +1,58 @@
 package models;
 
-public class Trade {
-    private static int ID_COUNTER;
-    private int id;
-    private int carId;
-    private int customerId;
+import java.util.UUID;
 
-    public Trade(int carId, int customerId) {
-        this.id = ++ID_COUNTER;
+public class Trade {
+    private UUID id;
+    private UUID carId;
+    private UUID customerId;
+
+    public Trade(UUID carId, UUID customerId) {
+        this.id = UUID.randomUUID();
         this.carId = carId;
         this.customerId = customerId;
     }
 
-    public Trade(int id, int carId, int customerId) {
+    public Trade(UUID id, UUID carId, UUID customerId) {
         this.id = id;
         this.carId = carId;
         this.customerId = customerId;
     }
 
-    public int getId() {
+    public Trade() {
+
+    }
+
+    public UUID getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
-    public int getCarId() {
+    public UUID getCarId() {
         return carId;
     }
 
-    public void setCarId(int carId) {
+    public void setCarId(UUID carId) {
         this.carId = carId;
     }
 
-    public int getCustomerId() {
+    public UUID getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(int customerId) {
+    public void setCustomerId(UUID customerId) {
         this.customerId = customerId;
     }
 
     @Override
     public String toString() {
-        return id +
+        return id.toString() +
                 " " +
-                carId +
+                carId.toString() +
                 " " +
-                customerId;
+                customerId.toString();
     }
 }

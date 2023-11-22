@@ -4,10 +4,7 @@ import models.Car;
 import enums.CarType;
 import repos.CarRepo;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class CarRepoInMemory implements CarRepo {
     private static CarRepoInMemory INSTANCE;
@@ -33,7 +30,7 @@ public class CarRepoInMemory implements CarRepo {
     }
 
     @Override
-    public Car findById(int id) {
+    public Car findById(UUID id) {
         for (Car car : databaseCar){
             if (car.getId() == id){
                 return car;
@@ -44,14 +41,14 @@ public class CarRepoInMemory implements CarRepo {
 
     @Override
     public void update(Car newCar) {
-        Car oldCar = findById(newCar.getId());
-        oldCar.setType(newCar.getType());
-        oldCar.setBrand(newCar.getBrand());
-        oldCar.setModel(newCar.getModel());
+        Car car = findById(newCar.getId());
+        car.setType(newCar.getType());
+        car.setBrand(newCar.getBrand());
+        car.setModel(newCar.getModel());
     }
 
     @Override
-    public void removeById(int id){
+    public void removeById(UUID id){
         databaseCar.remove(findById(id));
     }
 

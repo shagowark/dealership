@@ -24,6 +24,7 @@
 
 
 
+import config.DBConnectionManager;
 import ui.console.ConsoleUI;
 
 // по идее консоль - ui, должна только регистрировать клики и отображать views. следовательно

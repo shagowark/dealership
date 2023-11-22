@@ -3,6 +3,7 @@ package ui.console;
 import controllers.CustomerController;
 
 import java.util.Scanner;
+import java.util.UUID;
 
 public class CustomerMenu implements Command{
     private final Scanner input;
@@ -76,7 +77,8 @@ public class CustomerMenu implements Command{
     private void removeCustomer() {
         try {
             System.out.println("Введите ID клиента, который хотите удалить");
-            customerController.removeCustomerById(input.nextInt());
+            input.nextLine();
+            customerController.removeCustomerById(UUID.fromString(input.nextLine()));
             System.out.println("Успешно");
         } catch (Exception e) {
             System.out.println("Неверный ввод!");
@@ -88,6 +90,7 @@ public class CustomerMenu implements Command{
             System.out.println("Введите актуальную информацию о клиенте (вместе с ID)");
             input.nextLine();
             customerController.updateCustomer(input.nextLine());
+            System.out.println("Успешно");
         } catch (Exception e) {
             System.out.println("Неверный ввод!");
         }

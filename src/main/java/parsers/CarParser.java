@@ -3,6 +3,8 @@ package parsers;
 import models.Car;
 import enums.CarType;
 
+import java.util.UUID;
+
 public class CarParser {
     public static Car parseStrToCar(String str){
         String[] words = str.split(" ");
@@ -12,8 +14,8 @@ public class CarParser {
 
     public static Car parseStrToCarWithId(String str){
         String[] words = str.split(" ");
-        return new Car(Integer.parseInt(
-                words[0]),
+        return new Car(
+                UUID.fromString(words[0]),
                 words[1].equals("Passenger") ? CarType.PASSENGER : CarType.TRUCK,
                 words[2], words[3]);
     }

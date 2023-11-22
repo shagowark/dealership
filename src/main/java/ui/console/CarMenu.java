@@ -3,6 +3,7 @@ package ui.console;
 import controllers.CarController;
 
 import java.util.Scanner;
+import java.util.UUID;
 
 public class CarMenu implements Command{
     private final CarController carController = CarController.getInstance();
@@ -78,7 +79,8 @@ public class CarMenu implements Command{
     private void removeCar() {
         try {
             System.out.println("Введите ID автомобиля, который хотите удалить");
-            carController.removeCarById(input.nextInt());
+            input.nextLine();
+            carController.removeCarById(UUID.fromString(input.nextLine()));
             System.out.println("Успешно");
         } catch (Exception e) {
             System.out.println("Неверный ввод!");
@@ -99,7 +101,8 @@ public class CarMenu implements Command{
     private void sellCar() {
         try {
             System.out.println("Введите ID продаваемого автомобиля");
-            int id = input.nextInt();
+            input.nextLine();
+            UUID id = UUID.fromString(input.nextLine());
             System.out.println("Введите информацию о покупателе");
             input.nextLine();
             String customerStr = input.nextLine();

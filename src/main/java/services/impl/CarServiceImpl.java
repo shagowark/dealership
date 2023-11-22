@@ -5,13 +5,16 @@ import models.Customer;
 import models.Trade;
 import parsers.CustomerParser;
 import repos.CarRepo;
+import repos.impl.db.CarRepoDB;
 import repos.impl.inMemory.CarRepoInMemory;
 import services.CarService;
 
 import java.util.List;
+import java.util.UUID;
+
 public class CarServiceImpl implements CarService {
     private static CarServiceImpl INSTANCE;
-    private final CarRepo carRepo = CarRepoInMemory.getInstance();
+    private final CarRepo carRepo = CarRepoDB.getInstance(); // можно менять на inmemory и db
     private final CustomerServiceImpl customerServiceImpl = CustomerServiceImpl.getInstance();
     private final TradeServiceImpl tradeServiceImpl = TradeServiceImpl.getInstance();
 
@@ -25,21 +28,20 @@ public class CarServiceImpl implements CarService {
     public void save(Car car){
         carRepo.save(car);
     }
-    public Car findById(int id){
+    public Car findById(UUID id){
         return carRepo.findById(id);
     }
     public void update(Car car){
         carRepo.update(car);
     }
-    public void removeById(int id){
+    public void removeById(UUID id){
         carRepo.removeById(id);
     }
     public List<Car> listAll(){
         return carRepo.listAll();
     }
 
-    public void sellCar(int carId, String customerStr) {
-        Car car = findById(carId);
+    public void sellCar(UUID carId, String customerStr) {
         Customer customer = CustomerParser.parseStrToCustomer(customerStr);
         customerServiceImpl.save(customer);
         tradeServiceImpl.save(new Trade(carId, customer.getId()));

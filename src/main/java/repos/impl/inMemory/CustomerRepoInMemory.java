@@ -6,6 +6,7 @@ import repos.CustomerRepo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class CustomerRepoInMemory implements CustomerRepo {
     private static CustomerRepoInMemory INSTANCE;
@@ -35,7 +36,7 @@ public class CustomerRepoInMemory implements CustomerRepo {
     }
 
     @Override
-    public Customer findById(int id) {
+    public Customer findById(UUID id) {
         for (Customer customer : databaseCustomer){
             if (customer.getId() == id){
                 return customer;
@@ -55,7 +56,7 @@ public class CustomerRepoInMemory implements CustomerRepo {
     }
 
     @Override
-    public void removeById(int id) {
+    public void removeById(UUID id) {
         databaseCustomer.remove(findById(id));
     }
 

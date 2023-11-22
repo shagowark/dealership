@@ -5,6 +5,8 @@ import enums.Gender;
 import models.Car;
 import models.Customer;
 
+import java.util.UUID;
+
 public class CustomerParser {
     public static Customer parseStrToCustomer(String str){
         String[] words = str.split(" ");
@@ -20,7 +22,7 @@ public class CustomerParser {
     public static Customer parseStrToCustomerWithId(String str){
         String[] words = str.split(" ");
         return new Customer(
-                Integer.parseInt(words[0]),
+                UUID.fromString(words[0]),
                 words[1],
                 words[2],
                 words[3],
