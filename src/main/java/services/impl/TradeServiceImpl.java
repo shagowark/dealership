@@ -2,6 +2,7 @@ package services.impl;
 
 import models.Trade;
 import repos.TradeRepo;
+import repos.impl.db.TradeRepoDB;
 import repos.impl.inMemory.TradeRepoInMemory;
 import services.TradeService;
 
@@ -10,7 +11,7 @@ import java.util.UUID;
 
 public class TradeServiceImpl implements TradeService {
     private static TradeServiceImpl INSTANCE;
-    private final TradeRepo tradeRepo = TradeRepoInMemory.getInstance();
+    private final TradeRepo tradeRepo = TradeRepoDB.getInstance(); // можно поменять на inmemory
 
     private TradeServiceImpl() {
     }

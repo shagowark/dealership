@@ -104,7 +104,6 @@ public class CarMenu implements Command{
             input.nextLine();
             UUID id = UUID.fromString(input.nextLine());
             System.out.println("Введите информацию о покупателе");
-            input.nextLine();
             String customerStr = input.nextLine();
             carController.sellCar(id, customerStr);
             System.out.println("Успешно");
