@@ -14,7 +14,7 @@ import java.util.UUID;
 
 public class CarServiceImpl implements CarService {
     private static CarServiceImpl INSTANCE;
-    private final CarRepo carRepo = CarRepoDB.getInstance(); // можно менять на inmemory и db
+    private final CarRepo carRepo = CarRepoInMemory.getInstance(); // можно менять на inmemory и db
     private final CustomerServiceImpl customerServiceImpl = CustomerServiceImpl.getInstance();
     private final TradeServiceImpl tradeServiceImpl = TradeServiceImpl.getInstance();
 

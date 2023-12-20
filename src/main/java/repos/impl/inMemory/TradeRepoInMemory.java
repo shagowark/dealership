@@ -30,7 +30,7 @@ public class TradeRepoInMemory implements TradeRepo {
     @Override
     public Trade findById(UUID id) {
         for (Trade trade : databaseTrade){
-            if (trade.getId() == id){
+            if (trade.getId().equals(id)){
                 return trade;
             }
         }

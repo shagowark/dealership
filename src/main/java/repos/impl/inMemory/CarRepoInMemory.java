@@ -32,7 +32,7 @@ public class CarRepoInMemory implements CarRepo {
     @Override
     public Car findById(UUID id) {
         for (Car car : databaseCar){
-            if (car.getId() == id){
+            if (car.getId().equals(id)){
                 return car;
             }
         }

@@ -38,7 +38,7 @@ public class CustomerRepoInMemory implements CustomerRepo {
     @Override
     public Customer findById(UUID id) {
         for (Customer customer : databaseCustomer){
-            if (customer.getId() == id){
+            if (customer.getId().equals(id)){
                 return customer;
             }
         }
