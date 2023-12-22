@@ -7,6 +7,7 @@
     <groupId>groupId</groupId>
     <artifactId>dealership</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
 
     <properties>
         <maven.compiler.source>18</maven.compiler.source>
@@ -21,6 +22,16 @@
             <artifactId>postgresql</artifactId>
             <version>42.6.0</version>
         </dependency>
+
     </dependencies>
-    
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.3.2</version>
+            </plugin>
+        </plugins>
+    </build>
 </project>

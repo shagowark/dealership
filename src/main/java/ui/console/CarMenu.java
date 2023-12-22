@@ -49,7 +49,6 @@ public class CarMenu implements Command{
             case "2" -> saveCar();
             case "3" -> removeCar();
             case "4" -> updateCar();
-            case "5" -> sellCar();
             case "x" -> {
                 System.out.println("Возвращение...");
                 running = false;
@@ -92,20 +91,6 @@ public class CarMenu implements Command{
             System.out.println("Введите актуальную информацию об автомобиле (вместе с ID)");
             input.nextLine();
             carController.updateCar(input.nextLine());
-            System.out.println("Успешно");
-        } catch (Exception e) {
-            System.out.println("Неверный ввод!");
-        }
-    }
-
-    private void sellCar() {
-        try {
-            System.out.println("Введите ID продаваемого автомобиля");
-            input.nextLine();
-            UUID id = UUID.fromString(input.nextLine());
-            System.out.println("Введите информацию о покупателе");
-            String customerStr = input.nextLine();
-            carController.sellCar(id, customerStr);
             System.out.println("Успешно");
         } catch (Exception e) {
             System.out.println("Неверный ввод!");

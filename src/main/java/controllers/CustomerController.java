@@ -2,6 +2,7 @@ package controllers;
 
 import models.Customer;
 import parsers.CustomerParser;
+import services.CustomerService;
 import services.impl.CustomerServiceImpl;
 
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.UUID;
 
 public class CustomerController {
     private static CustomerController INSTANCE;
-    private final CustomerServiceImpl customerServiceImpl = CustomerServiceImpl.getInstance();
+    private final CustomerService customerService = CustomerServiceImpl.getInstance();
     private CustomerController(){}
     public static CustomerController getInstance(){
         if (INSTANCE == null){
@@ -19,20 +20,20 @@ public class CustomerController {
     }
 
     public void saveCustomer(String customerStr){
-        customerServiceImpl.save(CustomerParser.parseStrToCustomer(customerStr));
+        customerService.save(CustomerParser.parseStrToCustomer(customerStr));
     }
 
     public String findCustomerById(UUID id){
-        return customerServiceImpl.findById(id).toString();
+        return customerService.findById(id).toString();
     }
     public void  updateCustomer(String carStr){
-        customerServiceImpl.update(CustomerParser.parseStrToCustomerWithId(carStr));
+        customerService.update(CustomerParser.parseStrToCustomerWithId(carStr));
     }
     public void removeCustomerById(UUID id){
-        customerServiceImpl.removeById(id);
+        customerService.removeById(id);
     }
 
     public List<String> listAllCustomers(){
-        return customerServiceImpl.listAll().stream().map(Customer::toString).toList();
+        return customerService.listAll().stream().map(Customer::toString).toList();
     }
 }
